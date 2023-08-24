@@ -64,14 +64,12 @@ net_device_open(struct net_device *dev)
     return -1;
   }
 
-  /*
   if (dev->ops->open) {
     if (dev->ops->open(dev) == -1) {
       errorf("failure, dev=%s", dev->name);
       return -1;
     }
   }
-  */
 
   dev->flags |= NET_DEVICE_FLAG_UP;
   infof("dev=%s, state=%s", dev->name, NET_DEVICE_STATE(dev));
