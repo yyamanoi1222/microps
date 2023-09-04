@@ -247,7 +247,10 @@ net_run(void)
   debugf("open all devices...");
 
   for (dev = devices; dev; dev = dev->next) {
-    net_device_open(dev);
+    if (net_device_open(dev) == -1) {
+      errorf("net_device_open() failure, dev=%s", dev->name);
+      return -1;
+    }
   }
   debugf("running...");
   return 0;
